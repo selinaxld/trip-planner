@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+body {
+  font-family: var(--font-geist-sans, 'Inter', sans-serif);
+  background: linear-gradient(135deg, #e0e7ff 0%, #f0f4ff 100%);
+  min-height: 100vh;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: #e0e7ff;
+}
+::-webkit-scrollbar-thumb {
+  background: #a5b4fc;
+  border-radius: 4px;
+}
+
+/* Custom classes for chat bubbles, plan cards, etc. can go here */
