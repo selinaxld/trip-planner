@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Calendar, Users, MapPin, DollarSign, Clock, Star, Loader2 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { parseDurationToDays } from '../lib/utils'
 
 const DEFAULT_TRAVEL_DETAILS = {
   travel_start_date: null,
@@ -180,7 +181,10 @@ export default function TravelPlanningWorkflow() {
                   {analysis.recommendations.duration.map((option, index) => (
                     <button
                       key={index}
-                      onClick={() => updateTravelDetail('duration', option.split(' ')[0])}
+                      onClick={() => {
+                        const days = parseDurationToDays(option)
+                        if (days != null) updateTravelDetail('duration', days)
+                      }}
                       className="px-3 py-1 text-sm bg-gray-100 hover:bg-blue-100 rounded-full"
                     >
                       {option}

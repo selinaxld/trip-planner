@@ -70,6 +70,30 @@ export function sanitizeInput(input) {
     .trim()
 }
 
+export function parseDurationToDays(text) {
+  if (text == null || text === '') return null
+
+  const normalized = String(text).toLowerCase().trim()
+
+  const rangeMatch = normalized.match(/(\d+)\s*-\s*(\d+)\s*(day|days|night|nights)/)
+  if (rangeMatch) {
+    return parseInt(rangeMatch[2], 10)
+  }
+
+  const match = normalized.match(/(\d+)\s*(day|days|night|nights|week|weeks|month|months)/)
+  if (!match) {
+    const numericOnly = parseInt(normalized, 10)
+    return Number.isNaN(numericOnly) ? null : numericOnly
+  }
+
+  const amount = parseInt(match[1], 10)
+  const unit = match[2]
+
+  if (unit.startsWith('week')) return amount * 7
+  if (unit.startsWith('month')) return amount * 30
+  return amount
+}
+
 export function parseUserInput(input) {
   const sanitizedInput = sanitizeInput(input)
   

@@ -81,27 +81,6 @@ export default function LoginPage() {
             {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : (view === 'login' ? 'Sign In' : 'Sign Up')}
           </button>
         </form>
-        <div className="my-6 flex items-center gap-2">
-          <div className="flex-1 h-px bg-gray-200" />
-          <span className="text-xs text-gray-400">OR</span>
-          <div className="flex-1 h-px bg-gray-200" />
-        </div>
-        <div className="flex flex-col gap-3">
-          <button
-            onClick={() => handleOAuth('google')}
-            className="w-full flex items-center justify-center gap-2 py-2 px-4 rounded-lg bg-white border border-gray-300 hover:bg-gray-50 text-gray-900 font-semibold"
-            disabled={loading}
-          >
-            <Circle className="w-5 h-5 text-red-500" /> Continue with Google
-          </button>
-          <button
-            onClick={() => handleOAuth('apple')}
-            className="w-full flex items-center justify-center gap-2 py-2 px-4 rounded-lg bg-black text-white font-semibold hover:bg-gray-900"
-            disabled={loading}
-          >
-            <Apple className="w-5 h-5" /> Continue with Apple
-          </button>
-        </div>
         <div className="mt-6 text-center text-sm text-gray-600">
           {view === 'login' ? (
             <>
